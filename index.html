@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
+<!-- saved from url=(0039)file:///Users/echo/Downloads/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Groovy Code Formatter with Syntax Highlighting</title>
   <style>
@@ -25,30 +24,30 @@
     }
   </style>
   <!-- 引入highlight.js的核心CSS文件 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+  <link rel="stylesheet" href="default.min.css">
   <!-- 引入Groovy语言的语法高亮定义文件（针对highlight.js） -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="monokai-sublime.min.css">
 </head>
 
 <body>
   <h1>Groovy Code Formatter with Syntax Highlighting <button id="formatButton">格式化代码</button></h1>
 
   <!-- 新增的容器div -->
-  <div class="textareas-container"  >
-    <textarea id="groovyEditor1" style = "width:50%"></textarea>
-    <textarea id="groovyEditor2" style = "width:50%"></textarea>
+  <div class="textareas-container">
+    <textarea id="groovyEditor1" style="width:50%"></textarea>
+    <textarea id="groovyEditor2" style="width:50%"></textarea>
   </div>
   <!-- 引入js-beautify库，可从CDN获取 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+  <script src="beautify.js"></script>
+  <script src="beautify-css.js"></script>
+  <script src="beautify-html.js"></script>
+  <script src="beautify.min.js"></script>
+  <script src="beautify-css.min.js"></script>
+  <script src="beautify-html.min.js"></script>
   <!-- 引入highlight.js的核心JS文件 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="highlight.min.js"></script>
   <!-- 引入Groovy语言对于highlight.js的语法解析支持文件 -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/groovy.min.js"></script>
+  <script src="groovy.min.js"></script>
   <script>
     // 获取按钮元素
     const formatButton = document.getElementById('formatButton');
@@ -90,7 +89,11 @@
       // 使用highlight.js对文本域2中的代码进行高亮显示
       hljs.highlightAll();
     });
+    // 初始化时对示例代码（如果有的话）进行高亮显示
+    document.addEventListener('DOMContentLoaded', function () {
+      hljs.initHighlightingOnLoad();
+    });
   </script>
-</body>
 
-</html>
+
+</body></html>
