@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groovy Code Formatter with Syntax Highlighting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    textarea {
+      width: 400px;
+      height: 800px;
+      margin-bottom: 10px;
+    }
+
+    /* 新增的容器样式，用于包裹两个文本域，使用flexbox布局 */
+  .textareas-container {
+      display: flex;
+	  
+      justify-content: space-between;
+    }
+  </style>
+  <!-- 引入highlight.js的核心CSS文件 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+  <!-- 引入Groovy语言的语法高亮定义文件（针对highlight.js） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai-sublime.min.css">
+</head>
+
+<body>
+  <h1>Groovy Code Formatter with Syntax Highlighting <button id="formatButton">格式化代码</button></h1>
+
+  <!-- 新增的容器div -->
+  <div class="textareas-container"  >
+    <textarea id="groovyEditor1" style = "width:50%"></textarea>
+    <textarea id="groovyEditor2" style = "width:50%"></textarea>
+  </div>
+  <!-- 引入js-beautify库，可从CDN获取 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+  <!-- 引入highlight.js的核心JS文件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <!-- 引入Groovy语言对于highlight.js的语法解析支持文件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/groovy.min.js"></script>
+  <script>
+    // 获取按钮元素
+    const formatButton = document.getElementById('formatButton');
+    // 获取两个文本域元素
+    const editor1 = document.getElementById('groovyEditor1');
+    const editor2 = document.getElementById('groovyEditor2');
+
+    // 为按钮添加点击事件监听器
+    formatButton.addEventListener('click', function () {
+      // 获取文本域1中的代码内容
+      const code = editor1.value;
+      // 使用js-beautify对代码进行格式化，指定语言为groovy
+      const formattedCode = js_beautify(code, {
+        indent_size: 2,
+        indent_char: " ",
+        indent_with_tabs: false,
+        editorconfig: false,
+        jslint_happy: false,
+        space_after_anon_function: false,
+        brace_style: "collapse",
+        keep_array_indentation: false,
+        keep_function_indentation: false,
+        extra_liners: [],
+        max_preserve_newlines: 10,
+        preserve_newlines: true,
+        break_chained_methods: false,
+        eval_code: false,
+        unescape_strings: false,
+        wrap_line_length: 0,
+        wrap_attributes: "auto",
+        end_with_newline: false,
+        comma_first: false,
+        e4x: false,
+        indent_empty_lines: false,
+        language: "groovy"
+      });
+      // 将格式化后的代码放入文本域2中
+      editor2.value = formattedCode;
+      // 使用highlight.js对文本域2中的代码进行高亮显示
+      hljs.highlightAll();
+    });
+    // 初始化时对示例代码（如果有的话）进行高亮显示
+    document.addEventListener('DOMContentLoaded', function () {
+      hljs.initHighlightingOnLoad();
+    });
+  </script>
+</body>
+
+</html>
